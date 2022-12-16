@@ -1,30 +1,22 @@
-const { daftarPertanyaan, simpanContact } = require("./contacts");
+// const { daftarPertanyaan, simpanContact } = require("./contacts");
 
-const main = async () => {
-  const nama = await daftarPertanyaan("Masukkan nama anda? ");
-  const noHP = await daftarPertanyaan("Masukkan nomor handphone anda? ");
-  const email = await daftarPertanyaan("Masukkan email anda? ");
+// const main = async () => {
+//   const nama = await daftarPertanyaan("Masukkan nama anda? ");
+//   const noHP = await daftarPertanyaan("Masukkan nomor handphone anda? ");
+//   const email = await daftarPertanyaan("Masukkan email anda? ");
 
-  simpanContact(nama, email, noHP);
-};
+//   simpanContact(nama, email, noHP);
+// };
 
-main();
+// main();
 
-// rl.question("Masukkan nama anda : ", (nama) => {
-//   rl.question("Masukkan no hp anda : ", (no) => {
-//     const obj = {
-//       Nama: nama,
-//       NoHP: no,
-//     };
-//     const file = fs.readFileSync("data/contacts.json", "utf-8");
-//     const contacts = JSON.parse(file);
+//Ambil argument dari command line
+// console.log(process.argv[2]);
+// const perintah = process.argv[2];
+// if(command === 'add'){
 
-//     contacts.push(obj);
+// }else if(command === 'remove'){
 
-//     fs.writeFileSync("data/contacts.json", JSON.stringify(contacts));
+// }else if(command === 'update'){
 
-//     console.log("Terimakasih Sudah Memasukkan Data");
-
-//     rl.close();
-//   });
-// });
+// }
