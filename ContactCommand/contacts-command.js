@@ -1,6 +1,7 @@
 //import package
 const fs = require("fs");
 const validator = require("validator");
+const chalk = require("chalk");
 
 //Cek dan create folder data
 const pathDir = "../data";
@@ -33,7 +34,9 @@ exports.simpanContact = (nama, noHP, email) => {
   //cek duplicate
   const duplikat = contacts.find((contacts) => contacts.Nama === nama);
   if (duplikat) {
-    console.log("Nama sudah terdaftar, silahkan cek dan masukkan nama lain");
+    console.log(
+      chalk`Kontak dengan nama {bgRed.black ${nama}} sudah terdaftar, silahkan cek dan masukkan nama lain`
+    );
     return false;
   }
 
@@ -51,11 +54,12 @@ exports.simpanContact = (nama, noHP, email) => {
     return false;
   }
 
+  //save contact
   contacts.push(obj);
 
   fs.writeFileSync("../data/contacts.json", JSON.stringify(contacts));
 
-  console.log("Terimakasih Sudah Memasukkan Data");
+  console.log(chalk`Data dengan nama {bgRed.black ${nama}} ditambahkan`);
 };
 
 exports.listContacts = () => {
@@ -72,9 +76,34 @@ exports.detailContacts = (nama) => {
     (contact) => contact.Nama.toLowerCase() === nama.toLowerCase()
   );
   if (!contact) {
-    console.log(`Mohon maaf, kontak dengan nama ${nama} tidak ditemukan`);
+    console.log(
+      chalk`Mohon maaf, kontak dengan nama {bgRed.black ${nama}} tidak ditemukan`
+    );
     return false;
-  } else {
-    console.log(`${contact.Nama} - ${contact.NoHP} - ${contact.Email}`);
   }
+
+  console.log(`Nama : ${contact.Nama} `);
+  console.log(`No HP : ${contact.NoHP} `);
+  if (contact.Email) {
+    console.log(`Email : ${contact.Email} `);
+  }
+};
+
+exports.deleteContacts = (nama) => {
+  const contacts = loadContact();
+  const newContacts = contacts.filter(
+    (contact) => contact.Nama.toLowerCase() !== nama.toLowerCase()
+  );
+  if (contacts.length === newContacts.length) {
+    console.log(
+      chalk`Mohon maaf, kontak dengan nama {bgRed.black ${nama}} tidak ditemukan`
+    );
+    return false;
+  }
+
+  fs.writeFileSync("../data/contacts.json", JSON.stringify(newContacts));
+
+  console.log(
+    chalk`Kontak dengan nama {bgRed.black ${nama}} berhasil dihapus!`
+  );
 };

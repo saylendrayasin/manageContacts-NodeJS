@@ -3,6 +3,7 @@ const {
   simpanContact,
   listContacts,
   detailContacts,
+  deleteContacts,
 } = require("./contacts-command");
 
 //Menambah kontak
@@ -45,7 +46,7 @@ yargs.command({
 //Menampilkan detail dari salah satu kontak
 yargs.command({
   command: "detail",
-  describe: "Melihat detail dari salah satu kontak",
+  describe: "Melihat detail dari salah satu kontak berdasarkan nama",
   builder: {
     nama: {
       describe: "Nama Lengkap",
@@ -55,6 +56,22 @@ yargs.command({
   },
   handler(argv) {
     detailContacts(argv.nama);
+  },
+});
+
+//Menghapus salah satu kontak
+yargs.command({
+  command: "delete",
+  describe: "Menghapus salah satu kontak berdasarkan nama",
+  builder: {
+    nama: {
+      describe: "Nama Lengkap",
+      demandOption: true,
+      type: "string",
+    },
+  },
+  handler(argv) {
+    deleteContacts(argv.nama);
   },
 });
 
