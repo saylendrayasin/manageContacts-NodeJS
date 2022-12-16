@@ -1,1 +1,5 @@
-[]
+[
+  { "Nama": "as", "NoHP": "asd", "Email": "as" },
+  { "Nama": "s", "NoHP": "asd", "Email": "as@gmail.com" },
+  { "Nama": "ss", "NoHP": "08123422", "Email": "as@gmail.com" }
+]

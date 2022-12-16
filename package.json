@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/saylendrayasin/manageContacts-NodeJS#readme",
   "dependencies": {
+    "validator": "^13.7.0",
     "yargs": "^16.2.0"
   }
 }

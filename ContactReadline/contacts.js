@@ -3,13 +3,13 @@ const fs = require("fs");
 const readline = require("readline");
 
 //Cek dan create folder data
-const pathDir = "./data";
+const pathDir = "../data";
 if (!fs.existsSync(pathDir)) {
   fs.mkdirSync(pathDir);
 }
 
 //Cek dan create file contacts.js
-const pathContacts = "./data/contacts.json";
+const pathContacts = "../data/contacts.json";
 if (!fs.existsSync(pathContacts)) {
   fs.writeFileSync(pathContacts, "[]", "utf-8");
 }
@@ -33,12 +33,12 @@ exports.simpanContact = (nama, noHP, email) => {
     NoHP: noHP,
     Email: email,
   };
-  const file = fs.readFileSync("data/contacts.json", "utf-8");
+  const file = fs.readFileSync("../data/contacts.json", "utf-8");
   const contacts = JSON.parse(file);
 
   contacts.push(obj);
 
-  fs.writeFileSync("data/contacts.json", JSON.stringify(contacts));
+  fs.writeFileSync("../data/contacts.json", JSON.stringify(contacts));
 
   console.log("Terimakasih Sudah Memasukkan Data");
 
